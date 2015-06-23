@@ -1,6 +1,6 @@
 {
   "name": "aurelia-generate",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "registry": "jspm",
   "description": "An automagical way of generating templates/markup at runtime based upon your view model schema",
   "keywords": [
@@ -8,7 +8,7 @@
     "elements"
   ],
   "license": "MIT",
-  "main": "dist/commonjs/index.js",
+  "main": "dist/commonjs/aurelia-generate.js",
   "repository": {
     "type": "git",
     "url": "http://github.com/grofit/aurelia-generate"
@@ -37,7 +37,7 @@
     "yargs": "^2.1.1"
   },
   "jspm": {
-    "main": "index",
+    "main": "aurelia-generate",
     "format": "register",
     "directories": {
       "lib": "dist/system"
