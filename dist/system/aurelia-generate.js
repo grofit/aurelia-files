@@ -52,6 +52,7 @@ System.register(['aurelia-framework', './default-template-generator'], function 
               documentFragment.appendChild(generatedElement);
             });
 
+            console.log('Generated ' + generatedElements.length + ' Elements');
             var resources = new ViewResources(this.resourceRegistry);
             var viewFactory = this.viewCompiler.compile(documentFragment, resources);
             var view = viewFactory.create(this.element, this.usingModel);

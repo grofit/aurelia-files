@@ -43,6 +43,7 @@ var GenerateElement = (function () {
         documentFragment.appendChild(generatedElement);
       });
 
+      console.log('Generated ' + generatedElements.length + ' Elements');
       var resources = new _aureliaFramework.ViewResources(this.resourceRegistry);
       var viewFactory = this.viewCompiler.compile(documentFragment, resources);
       var view = viewFactory.create(this.element, this.usingModel);
