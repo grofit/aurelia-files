@@ -35,7 +35,7 @@ System.register(['aurelia-framework', '../generators/template-generator'], funct
           this.viewSlot = viewSlot;
           this.viewCompiler = viewCompiler;
           this.resourceRegistry = resourceRegistry;
-          this.templateGenerator = TemplateGenerator;
+          this.templateGenerator = templateGenerator;
         }
 
         var _GenerateElement = GenerateElement;
@@ -47,7 +47,7 @@ System.register(['aurelia-framework', '../generators/template-generator'], funct
               usingModel: this.usingModel
             };
 
-            var generatedElements = templateGenerator.generateTemplate(options);
+            var generatedElements = this.templateGenerator.generateTemplate(options);
             var documentFragment = document.createDocumentFragment();
             generatedElements.forEach(function (generatedElement) {
               documentFragment.appendChild(generatedElement);

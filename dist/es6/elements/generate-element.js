@@ -12,7 +12,7 @@ export class GenerateElement {
     this.viewSlot = viewSlot;
     this.viewCompiler = viewCompiler;
     this.resourceRegistry = resourceRegistry;
-    this.templateGenerator = TemplateGenerator;
+    this.templateGenerator = templateGenerator;
   }
 
   attached() {
@@ -20,7 +20,7 @@ export class GenerateElement {
       usingModel: this.usingModel
     };
 
-    var generatedElements = templateGenerator.generateTemplate(options);
+    var generatedElements = this.templateGenerator.generateTemplate(options);
     var documentFragment = document.createDocumentFragment();
     generatedElements.forEach((generatedElement) => {
       documentFragment.appendChild(generatedElement);

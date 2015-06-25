@@ -26,7 +26,7 @@ var GenerateElement = (function () {
     this.viewSlot = viewSlot;
     this.viewCompiler = viewCompiler;
     this.resourceRegistry = resourceRegistry;
-    this.templateGenerator = _generatorsTemplateGenerator.TemplateGenerator;
+    this.templateGenerator = templateGenerator;
   }
 
   var _GenerateElement = GenerateElement;
@@ -38,7 +38,7 @@ var GenerateElement = (function () {
         usingModel: this.usingModel
       };
 
-      var generatedElements = templateGenerator.generateTemplate(options);
+      var generatedElements = this.templateGenerator.generateTemplate(options);
       var documentFragment = document.createDocumentFragment();
       generatedElements.forEach(function (generatedElement) {
         documentFragment.appendChild(generatedElement);
