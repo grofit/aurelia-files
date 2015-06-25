@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', './default-template-generator'], function (exports, _aureliaFramework, _defaultTemplateGenerator) {
+define(['exports', 'aurelia-framework', '../generators/template-generator'], function (exports, _aureliaFramework, _generatorsTemplateGenerator) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -14,7 +14,7 @@ define(['exports', 'aurelia-framework', './default-template-generator'], functio
   var GenerateElement = (function () {
     var _instanceInitializers = {};
 
-    function GenerateElement(element, viewSlot, viewCompiler, resourceRegistry) {
+    function GenerateElement(element, viewSlot, viewCompiler, resourceRegistry, templateGenerator) {
       _classCallCheck(this, _GenerateElement);
 
       _defineDecoratedPropertyDescriptor(this, 'usingModel', _instanceInitializers);
@@ -23,6 +23,7 @@ define(['exports', 'aurelia-framework', './default-template-generator'], functio
       this.viewSlot = viewSlot;
       this.viewCompiler = viewCompiler;
       this.resourceRegistry = resourceRegistry;
+      this.templateGenerator = _generatorsTemplateGenerator.TemplateGenerator;
     }
 
     var _GenerateElement = GenerateElement;
@@ -34,7 +35,7 @@ define(['exports', 'aurelia-framework', './default-template-generator'], functio
           usingModel: this.usingModel
         };
 
-        var generatedElements = new _defaultTemplateGenerator.DefaultTemplateGenerator().generateTemplate(options);
+        var generatedElements = templateGenerator.generateTemplate(options);
         var documentFragment = document.createDocumentFragment();
         generatedElements.forEach(function (generatedElement) {
           documentFragment.appendChild(generatedElement);
@@ -53,7 +54,7 @@ define(['exports', 'aurelia-framework', './default-template-generator'], functio
       enumerable: true
     }], null, _instanceInitializers);
 
-    GenerateElement = (0, _aureliaFramework.inject)(Element, _aureliaFramework.ViewSlot, _aureliaFramework.ViewCompiler, _aureliaFramework.ResourceRegistry)(GenerateElement) || GenerateElement;
+    GenerateElement = (0, _aureliaFramework.inject)(Element, _aureliaFramework.ViewSlot, _aureliaFramework.ViewCompiler, _aureliaFramework.ResourceRegistry, _generatorsTemplateGenerator.TemplateGenerator)(GenerateElement) || GenerateElement;
     GenerateElement = (0, _aureliaFramework.noView)(GenerateElement) || GenerateElement;
     GenerateElement = (0, _aureliaFramework.customElement)('generate')(GenerateElement) || GenerateElement;
     return GenerateElement;

@@ -1,6 +1,6 @@
 {
   "name": "aurelia-generate",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "registry": "jspm",
   "description": "An automagical way of generating templates/markup at runtime based upon your view model schema",
   "keywords": [

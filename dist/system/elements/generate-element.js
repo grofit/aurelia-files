@@ -1,7 +1,7 @@
-System.register(['aurelia-framework', './default-template-generator'], function (_export) {
+System.register(['aurelia-framework', '../generators/template-generator'], function (_export) {
   'use strict';
 
-  var inject, customElement, noView, bindable, ViewSlot, ResourceRegistry, ViewResources, ViewCompiler, DefaultTemplateGenerator, GenerateElement;
+  var inject, customElement, noView, bindable, ViewSlot, ResourceRegistry, ViewResources, ViewCompiler, TemplateGenerator, GenerateElement;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -19,14 +19,14 @@ System.register(['aurelia-framework', './default-template-generator'], function 
       ResourceRegistry = _aureliaFramework.ResourceRegistry;
       ViewResources = _aureliaFramework.ViewResources;
       ViewCompiler = _aureliaFramework.ViewCompiler;
-    }, function (_defaultTemplateGenerator) {
-      DefaultTemplateGenerator = _defaultTemplateGenerator.DefaultTemplateGenerator;
+    }, function (_generatorsTemplateGenerator) {
+      TemplateGenerator = _generatorsTemplateGenerator.TemplateGenerator;
     }],
     execute: function () {
       GenerateElement = (function () {
         var _instanceInitializers = {};
 
-        function GenerateElement(element, viewSlot, viewCompiler, resourceRegistry) {
+        function GenerateElement(element, viewSlot, viewCompiler, resourceRegistry, templateGenerator) {
           _classCallCheck(this, _GenerateElement);
 
           _defineDecoratedPropertyDescriptor(this, 'usingModel', _instanceInitializers);
@@ -35,6 +35,7 @@ System.register(['aurelia-framework', './default-template-generator'], function 
           this.viewSlot = viewSlot;
           this.viewCompiler = viewCompiler;
           this.resourceRegistry = resourceRegistry;
+          this.templateGenerator = TemplateGenerator;
         }
 
         var _GenerateElement = GenerateElement;
@@ -46,7 +47,7 @@ System.register(['aurelia-framework', './default-template-generator'], function 
               usingModel: this.usingModel
             };
 
-            var generatedElements = new DefaultTemplateGenerator().generateTemplate(options);
+            var generatedElements = templateGenerator.generateTemplate(options);
             var documentFragment = document.createDocumentFragment();
             generatedElements.forEach(function (generatedElement) {
               documentFragment.appendChild(generatedElement);
@@ -65,7 +66,7 @@ System.register(['aurelia-framework', './default-template-generator'], function 
           enumerable: true
         }], null, _instanceInitializers);
 
-        GenerateElement = inject(Element, ViewSlot, ViewCompiler, ResourceRegistry)(GenerateElement) || GenerateElement;
+        GenerateElement = inject(Element, ViewSlot, ViewCompiler, ResourceRegistry, TemplateGenerator)(GenerateElement) || GenerateElement;
         GenerateElement = noView(GenerateElement) || GenerateElement;
         GenerateElement = customElement('generate')(GenerateElement) || GenerateElement;
         return GenerateElement;
