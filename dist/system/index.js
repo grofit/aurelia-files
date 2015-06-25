@@ -7,7 +7,8 @@ System.register(["./generators/template-generator", "./generators/default-templa
 
     function configure(aurelia) {
         aurelia.container.registerInstance(TemplateGenerator, new DefaultTemplateGenerator());
-        aurelia.globalizeResources("./generate-element");
+        aurelia.globalizeResources("./elements/generate-element");
+        console.log("PLUGIN GENERATE ACCEPTED 2");
     }
 
     return {

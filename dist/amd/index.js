@@ -8,6 +8,7 @@ define(["exports", "./generators/template-generator", "./generators/default-temp
 
     function configure(aurelia) {
         aurelia.container.registerInstance(_generatorsTemplateGenerator.TemplateGenerator, new _generatorsDefaultTemplateGenerator.DefaultTemplateGenerator());
-        aurelia.globalizeResources("./generate-element");
+        aurelia.globalizeResources("./elements/generate-element");
+        console.log("PLUGIN GENERATE ACCEPTED 2");
     }
 });

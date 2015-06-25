@@ -34,25 +34,6 @@ define(["exports", "./template-generator", "../helpers/element-helper", "../help
           return _helpersTypeHelper.TypeHelper.createInputType(property, "date");
         }
 
-        if (observable.rules) {
-          var rules = [];
-          observable.rules().forEach(function (validationRule) {
-            rules.push(validationRule.rule);
-          });
-
-          if (rules.indexOf("email") >= 0) {
-            return _helpersElementHelper.ElementHelper.createInputType(property, "email");
-          }
-
-          if (rules.indexOf("min") >= 0 || rules.indexOf("max") >= 0 || rules.indexOf("number") >= 0 || rules.indexOf("digits") >= 0) {
-            return _helpersElementHelper.ElementHelper.createInputType(property, "number");
-          }
-
-          if (rules.indexOf("date") >= 0) {
-            return _helpersElementHelper.ElementHelper.createInputType(property, "date");
-          }
-        }
-
         if (property.toLowerCase().indexOf("password") >= 0) {
           return _helpersElementHelper.ElementHelper.createInputType(property, "password");
         }
@@ -61,7 +42,7 @@ define(["exports", "./template-generator", "../helpers/element-helper", "../help
       };
 
       this.createForObservable = function (property, observable, idPrefix, idSuffix, withPlaceholders) {
-        var inputElement = _helpersElementHelper.ElementHelper.createInputElement(property, observable);
+        var inputElement = this.createInputElement(property, observable);
 
         if (withPlaceholders && inputElement.type != "checkbox") {
           var placeholderText = _helpersNameHelper.NameHelper.makeTextualName(property);
@@ -77,6 +58,8 @@ define(["exports", "./template-generator", "../helpers/element-helper", "../help
         var withLabels = _helpersTypeHelper.TypeHelper.isBoolean(options.withLabels) ? options.withLabels : true;
         var withPlaceholders = _helpersTypeHelper.TypeHelper.isBoolean(options.withPlaceholders) ? options.withPlaceholders : true;
         var withContainer = _helpersTypeHelper.TypeHelper.isBoolean(options.withContainer) ? options.withContainer : true;
+
+        console.log("OPTIONS", options);
 
         var generatedElements = [];
         var inputElement, labelElement, containerElement;

@@ -43,11 +43,7 @@ System.register(['aurelia-framework', '../generators/template-generator'], funct
         _createDecoratedClass(_GenerateElement, [{
           key: 'attached',
           value: function attached() {
-            var options = {
-              usingModel: this.usingModel
-            };
-
-            var generatedElements = this.templateGenerator.generateTemplate(options);
+            var generatedElements = this.templateGenerator.generateTemplate(this.usingModel, {});
             var documentFragment = document.createDocumentFragment();
             generatedElements.forEach(function (generatedElement) {
               documentFragment.appendChild(generatedElement);
