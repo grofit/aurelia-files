@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../handlers/file-handler.js'], function (exports, _aureliaFramework, _handlersFileHandlerJs) {
+define(['exports', 'aurelia-framework', '../handlers/file-handler'], function (exports, _aureliaFramework, _handlersFileHandler) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -41,15 +41,15 @@ define(['exports', 'aurelia-framework', '../handlers/file-handler.js'], function
     _createDecoratedClass(_FilesAttribute, [{
       key: 'bind',
       value: function bind() {
-        if (typeof onLoaded != 'function') {
+        if (!this.onLoaded) {
           throw new Error('You must specify an onLoaded callback at minimum');
         }
 
-        var fileHandler = new _handlersFileHandlerJs.FileHandler(onLoaded, onProgress, onError, fileFilter, maxFileSize, readAs, hoverClass);
+        var fileHandler = new _handlersFileHandler.FileHandler(this.onLoaded, this.onProgress, this.onError, this.fileFilter, this.maxFileSize, this.readAs, this.hoverClass);
 
         this.element.addEventListener('change', fileHandler.handleFileSelected, false);
 
-        if (allowDrop) {
+        if (this.allowDrop) {
           this.element.addEventListener('dragover', fileHandler.handleFileDrag, false);
           this.element.addEventListener('dragleave', fileHandler.handleFileDrag, false);
           this.element.addEventListener('drop', fileHandler.handleDrop, false);

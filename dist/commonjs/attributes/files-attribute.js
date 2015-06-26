@@ -12,7 +12,7 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaFramework = require('aurelia-framework');
 
-var _handlersFileHandlerJs = require('../handlers/file-handler.js');
+var _handlersFileHandler = require('../handlers/file-handler');
 
 var FilesAttribute = (function () {
   var _instanceInitializers = {};
@@ -44,15 +44,15 @@ var FilesAttribute = (function () {
   _createDecoratedClass(_FilesAttribute, [{
     key: 'bind',
     value: function bind() {
-      if (typeof onLoaded != 'function') {
+      if (!this.onLoaded) {
         throw new Error('You must specify an onLoaded callback at minimum');
       }
 
-      var fileHandler = new _handlersFileHandlerJs.FileHandler(onLoaded, onProgress, onError, fileFilter, maxFileSize, readAs, hoverClass);
+      var fileHandler = new _handlersFileHandler.FileHandler(this.onLoaded, this.onProgress, this.onError, this.fileFilter, this.maxFileSize, this.readAs, this.hoverClass);
 
       this.element.addEventListener('change', fileHandler.handleFileSelected, false);
 
-      if (allowDrop) {
+      if (this.allowDrop) {
         this.element.addEventListener('dragover', fileHandler.handleFileDrag, false);
         this.element.addEventListener('dragleave', fileHandler.handleFileDrag, false);
         this.element.addEventListener('drop', fileHandler.handleDrop, false);

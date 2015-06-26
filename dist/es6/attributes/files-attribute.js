@@ -1,5 +1,5 @@
 import {inject, customAttribute, bindable } from 'aurelia-framework';
-import { FileHandler } from "../handlers/file-handler.js";
+import { FileHandler } from "../handlers/file-handler";
 
 @customAttribute('files')
 @inject(Element)
@@ -18,13 +18,14 @@ export class FilesAttribute {
   }
 
   bind() {
-    if(typeof(onLoaded) != "function") { throw new Error("You must specify an onLoaded callback at minimum"); }
+    if(!this.onLoaded) { throw new Error("You must specify an onLoaded callback at minimum"); }
 
-    var fileHandler = new FileHandler(onLoaded, onProgress, onError, fileFilter, maxFileSize, readAs, hoverClass);
+    var fileHandler = new FileHandler(this.onLoaded, this.onProgress, this.onError,
+        this.fileFilter, this.maxFileSize, this.readAs, this.hoverClass);
     
     this.element.addEventListener('change', fileHandler.handleFileSelected, false);
 
-    if(allowDrop) {
+    if(this.allowDrop) {
       this.element.addEventListener('dragover', fileHandler.handleFileDrag, false);
       this.element.addEventListener('dragleave', fileHandler.handleFileDrag, false);
       this.element.addEventListener('drop', fileHandler.handleDrop, false);

@@ -13,6 +13,8 @@ define(["exports", "../helpers/file-reader-helper"], function (exports, _helpers
         function FileHandler(onLoaded, onProgress, onError, fileFilter, maxFileSize, readAs, hoverClass) {
             _classCallCheck(this, FileHandler);
 
+            this.__initializeProperties();
+
             this.onLoaded = onLoaded;
             this.onProgress = onProgress;
             this.onError = onError;
@@ -23,59 +25,60 @@ define(["exports", "../helpers/file-reader-helper"], function (exports, _helpers
         }
 
         _createClass(FileHandler, [{
-            key: "readFile",
-            value: function readFile(file) {
-                var reader = _helpersFileReaderHelper.FileReaderHelper.createReader(file, this.onLoaded, this.onProgress, this.onError);
+            key: "__initializeProperties",
+            value: function __initializeProperties() {
+                var _this = this;
 
-                if (this.readAs == "text") {
-                    reader.readAsText(file);
-                } else if (this.readAs == "array") {
-                    reader.readAsArrayBuffer(file);
-                } else if (this.readAs == "binary") {
-                    reader.readAsBinaryString(file);
-                } else {
-                    reader.readAsDataURL(file);
-                }
-            }
-        }, {
-            key: "handleFileDrag",
-            value: function handleFileDrag(fileDragEvent) {
-                fileDragEvent.stopPropagation();
-                fileDragEvent.preventDefault();
+                this.readFile = function (file) {
+                    var reader = _helpersFileReaderHelper.FileReaderHelper.createReader(file, _this.onLoaded, _this.onProgress, _this.onError);
 
-                if (fileDragEvent.type == "dragover") {
-                    fileDragEvent.target.classList.add(this.hoverClass);
-                } else {
-                    fileDragEvent.target.classList.remove(this.hoverClass);
-                }
-            }
-        }, {
-            key: "handleDrop",
-            value: function handleDrop(fileDropEvent) {
-                handleFileDrag(fileDropEvent);
-                handleFileSelected(fileDropEvent);
-            }
-        }, {
-            key: "handleFileSelected",
-            value: function handleFileSelected(fileSelectionEvent) {
-                var files = fileSelectionEvent.target.files || fileSelectionEvent.dataTransfer.files;
-                for (var i = 0, f; f = files[i]; i++) {
-                    if (this.fileFilter && !f.type.match(this.fileFilter)) {
-                        if (this.errorCallback) {
-                            this.errorCallback(f, "File type does not match filter");
-                        }
-                        continue;
+                    if (_this.readAs == "text") {
+                        reader.readAsText(file);
+                    } else if (_this.readAs == "array") {
+                        reader.readAsArrayBuffer(file);
+                    } else if (_this.readAs == "binary") {
+                        reader.readAsBinaryString(file);
+                    } else {
+                        reader.readAsDataURL(file);
                     }
+                };
 
-                    if (maxFileSize && f.size >= this.maxFileSize) {
-                        if (errorCallback) {
-                            this.errorCallback(f, "File exceeds file size limit");
-                        }
-                        continue;
+                this.handleFileDrag = function (fileDragEvent) {
+                    fileDragEvent.stopPropagation();
+                    fileDragEvent.preventDefault();
+
+                    if (fileDragEvent.type == "dragover") {
+                        fileDragEvent.target.classList.add(_this.hoverClass);
+                    } else {
+                        fileDragEvent.target.classList.remove(_this.hoverClass);
                     }
+                };
 
-                    readFile(f);
-                }
+                this.handleDrop = function (fileDropEvent) {
+                    _this.handleFileDrag(fileDropEvent);
+                    _this.handleFileSelected(fileDropEvent);
+                };
+
+                this.handleFileSelected = function (fileSelectionEvent) {
+                    var files = fileSelectionEvent.target.files || fileSelectionEvent.dataTransfer.files;
+                    for (var i = 0, f = undefined; f = files[i]; i++) {
+                        if (_this.fileFilter && !f.type.match(_this.fileFilter)) {
+                            if (_this.onError) {
+                                _this.onError(f, "File type does not match filter");
+                            }
+                            continue;
+                        }
+
+                        if (_this.maxFileSize && f.size >= _this.maxFileSize) {
+                            if (onError) {
+                                _this.onError(f, "File exceeds file size limit");
+                            }
+                            continue;
+                        }
+
+                        _this.readFile(f);
+                    }
+                };
             }
         }]);
 

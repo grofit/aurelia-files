@@ -13,7 +13,7 @@ export class FileHandler
         this.hoverClass = hoverClass || "file-hover";
     }
 
-    readFile(file) {
+    readFile = (file) => {
         var reader = FileReaderHelper.createReader(file, this.onLoaded, this.onProgress, this.onError);
 
         if(this.readAs == "text")
@@ -26,7 +26,7 @@ export class FileHandler
         { reader.readAsDataURL(file); }
     };
 
-    handleFileDrag(fileDragEvent)
+    handleFileDrag = (fileDragEvent) =>
     {
         fileDragEvent.stopPropagation();
         fileDragEvent.preventDefault();
@@ -37,31 +37,31 @@ export class FileHandler
         { fileDragEvent.target.classList.remove(this.hoverClass); }
     };
 
-    handleDrop(fileDropEvent)
+    handleDrop = (fileDropEvent) =>
     {
-        handleFileDrag(fileDropEvent);
-        handleFileSelected(fileDropEvent);
+        this.handleFileDrag(fileDropEvent);
+        this.handleFileSelected(fileDropEvent);
     };
 
-    handleFileSelected(fileSelectionEvent)
+    handleFileSelected = (fileSelectionEvent) =>
     {
         var files = fileSelectionEvent.target.files || fileSelectionEvent.dataTransfer.files;
-        for (var i = 0, f; f = files[i]; i++) {
+        for (let i = 0, f; f = files[i]; i++) {
             if (this.fileFilter && !f.type.match(this.fileFilter))
             {
-                if(this.errorCallback)
-                { this.errorCallback(f, "File type does not match filter"); }
+                if(this.onError)
+                { this.onError(f, "File type does not match filter"); }
                 continue;
             }
 
-            if(maxFileSize && f.size >= this.maxFileSize)
+            if(this.maxFileSize && f.size >= this.maxFileSize)
             {
-                if(errorCallback)
-                { this.errorCallback(f, "File exceeds file size limit"); }
+                if(onError)
+                { this.onError(f, "File exceeds file size limit"); }
                 continue;
             }
 
-            readFile(f);
+            this.readFile(f);
         }
     };
 }
