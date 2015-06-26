@@ -3,7 +3,7 @@ export function configure(aurelia)
     aurelia.use
         .standardConfiguration()
         .developmentLogging()
-        .plugin('../dist/system/index');
+        .plugin('aurelia-files');
 
     aurelia.start().then(a => a.setRoot());
 }
