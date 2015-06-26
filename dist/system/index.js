@@ -1,21 +1,17 @@
-System.register(["./generators/template-generator", "./generators/default-template-generator"], function (_export) {
+System.register(["./handlers/file-handler"], function (_export) {
     "use strict";
 
-    var TemplateGenerator, DefaultTemplateGenerator;
+    var FileHandler;
 
     _export("configure", configure);
 
     function configure(aurelia) {
-        aurelia.container.registerInstance(TemplateGenerator, new DefaultTemplateGenerator());
-        aurelia.globalizeResources("./elements/generate-element");
-        console.log("PLUGIN GENERATE ACCEPTED 2");
+        aurelia.globalizeResources("./attributes/files-attribute");
     }
 
     return {
-        setters: [function (_generatorsTemplateGenerator) {
-            TemplateGenerator = _generatorsTemplateGenerator.TemplateGenerator;
-        }, function (_generatorsDefaultTemplateGenerator) {
-            DefaultTemplateGenerator = _generatorsDefaultTemplateGenerator.DefaultTemplateGenerator;
+        setters: [function (_handlersFileHandler) {
+            FileHandler = _handlersFileHandler.FileHandler;
         }],
         execute: function () {}
     };

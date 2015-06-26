@@ -5,12 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.configure = configure;
 
-var _generatorsTemplateGenerator = require("./generators/template-generator");
-
-var _generatorsDefaultTemplateGenerator = require("./generators/default-template-generator");
+var _handlersFileHandler = require("./handlers/file-handler");
 
 function configure(aurelia) {
-    aurelia.container.registerInstance(_generatorsTemplateGenerator.TemplateGenerator, new _generatorsDefaultTemplateGenerator.DefaultTemplateGenerator());
-    aurelia.globalizeResources("./elements/generate-element");
-    console.log("PLUGIN GENERATE ACCEPTED 2");
+    aurelia.globalizeResources("./attributes/files-attribute");
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aurelia</title>
+</head>
+
+<body aurelia-app="configuration">
+<div class="splash">
+    <div class="message">Loading...</div>
+</div>
+<script data-require="jspm@0.16.11" data-semver="0.16.11" src="http://jspm.io/system@0.16.11.js"></script>
+<script data-require="aurelia@0.14.0" data-semver="0.14.0" src="http://cdn.rawgit.com/distros/aurelia/0.14.0/aurelia.js"></script>
+<script src="config.js"></script>
+<script>
+    System.import("aurelia-bootstrapper");
+</script>
+</body>
+
+</html>

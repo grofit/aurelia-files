@@ -1,17 +1,17 @@
 {
-  "name": "aurelia-generate",
-  "version": "0.0.8",
+  "name": "aurelia-files",
+  "version": "0.0.1",
   "registry": "jspm",
-  "description": "An automagical way of generating templates/markup at runtime based upon your view model schema",
+  "description": "A simple attribute plugin for Aurelia to simplify loading files with the HTML5 FileReader",
   "keywords": [
     "aurelia",
-    "elements"
+    "attributes"
   ],
   "license": "MIT",
   "main": "dist/commonjs/index.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/grofit/aurelia-generate"
+    "url": "http://github.com/grofit/aurelia-files"
   },
   "devDependencies": {
     "aurelia-tools": "^0.1.3",
