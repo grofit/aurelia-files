@@ -10,7 +10,7 @@ with jspm
 
 then
 
-`aurelia.use.plugin("aurelia-files");`
+`aurelia.use.plugin("grofit/aurelia-files");`
 
 ## Example
 
