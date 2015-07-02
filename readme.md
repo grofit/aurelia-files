@@ -16,7 +16,7 @@ then
 
 A simple example of allowing a user to load a file and then callback with the (file, data) arguments:
 ```
-<input type="file" id="some-file-element" files="on-loaded.bind: SomeFileLoadedCallback" /> 
+<input type="file" id="some-file-element" files="on-loaded.call: SomeFileLoadedCallback" /> 
 
 // some VM
 export class SomeVM
@@ -33,7 +33,7 @@ export class SomeVM
 
 A more complicated example with custom settings:
 ```
-<input id="some-files-element" files="on-loaded.bind: SomeLoadedCallback; on-progress.bind: SomeProgressCallback; on-error.bind: SomeErrorCallback, file-filter.bind: 'image.*', read-as.bind: 'binary' }" />
+<input id="some-files-element" files="on-loaded.call: SomeLoadedCallback; on-progress.call: SomeProgressCallback; on-error.call: SomeErrorCallback, file-filter.bind: 'image.*', read-as.bind: 'binary' }" />
 ```
 
 As shown above you can hook into any of the file loading events and get access to the data to display things like progress bars, and custom file filters, which although the accepts attribute should enforce this for you but does not currently work in all browsers. So in this case you can constrain loaded files and just ignore ones that dont match the pattern. Finally it is loading the data as a binary string in the above example, however this can be converted to use other supported types.
