@@ -24,6 +24,9 @@ export class SomeVM
 	SomeFileLoadedCallback(file, data) {
 		// Do something with file (js file) and data (content of the file)
 	}
+	
+	// Remember if you need to access the *this* scope use
+	// SomeFileLoadedCallback = (file, data) => { ... }
 }
 
 ```
