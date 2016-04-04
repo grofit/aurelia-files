@@ -1,9 +1,8 @@
-export function configure(aurelia)
-{
+export function configure(aurelia) {
     aurelia.use
         .standardConfiguration()
         .developmentLogging()
         .plugin('aurelia-files');
 
-    aurelia.start().then(a => a.setRoot());
+    aurelia.start().then(a => a.setRoot('src/app'));
 }

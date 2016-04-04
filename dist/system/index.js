@@ -1,18 +1,14 @@
-System.register(["./handlers/file-handler"], function (_export) {
+System.register([], function (_export) {
     "use strict";
-
-    var FileHandler;
 
     _export("configure", configure);
 
     function configure(aurelia) {
-        aurelia.globalizeResources("./attributes/files-attribute");
+        aurelia.globalResources("./attributes/files-attribute");
     }
 
     return {
-        setters: [function (_handlersFileHandler) {
-            FileHandler = _handlersFileHandler.FileHandler;
-        }],
+        setters: [],
         execute: function () {}
     };
 });

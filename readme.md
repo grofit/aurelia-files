@@ -14,6 +14,13 @@ then
 
 ## Example
 
+### Live Example
+[View Example](https://rawgit.com/grofit/aurelia-files/master/examples/index.html)
+
+You can see the code and everything in the examples folder!
+
+### Textual Examples
+
 A simple example of allowing a user to load a file and then callback with the (file, data) arguments:
 ```
 <input type="file" id="some-file-element" files="on-loaded.bind: SomeFileLoadedCallback" /> 

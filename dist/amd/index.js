@@ -1,4 +1,4 @@
-define(["exports", "./handlers/file-handler"], function (exports, _handlersFileHandler) {
+define(["exports"], function (exports) {
     "use strict";
 
     Object.defineProperty(exports, "__esModule", {
@@ -7,6 +7,6 @@ define(["exports", "./handlers/file-handler"], function (exports, _handlersFileH
     exports.configure = configure;
 
     function configure(aurelia) {
-        aurelia.globalizeResources("./attributes/files-attribute");
+        aurelia.globalResources("./attributes/files-attribute");
     }
 });

@@ -5,6 +5,6 @@ var stylish = require('jshint-stylish');
 
 gulp.task('lint', function() {
   return gulp.src(paths.source)
-    .pipe(jshint({esnext: true}))
+    .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });

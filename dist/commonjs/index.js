@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.configure = configure;
 
-var _handlersFileHandler = require("./handlers/file-handler");
-
 function configure(aurelia) {
-    aurelia.globalizeResources("./attributes/files-attribute");
+    aurelia.globalResources("./attributes/files-attribute");
 }

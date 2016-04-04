@@ -1,0 +1,35 @@
+<template>
+    <label for="image_files">Load Multiple Image Files</label>
+    <input type="file" id="image_files" multiple
+           files="on-loaded.bind: multipleImageFilesLoadedCallback; file-filter.bind: 'image.*';" />
+    <div id="loaded_images_files"></div>
+
+    <label for="text_file">Load Single Text File</label>
+    <input type="file" id="text_file"
+           files="on-loaded.bind: textFileLoadedCallback; file-filter.bind: 'text.*|application.*'; read-as.bind: 'text';" />
+    <div id="loaded_text_file"></div>
+
+    <label for="slow_file">Show File Progress (The bars loading is based upon file size and computer speed etc)</label>
+    <input type="file" id="slow_file"
+           files="on-loaded.bind: slowFileLoadedCallback; on-progress.bind: slowFileProgressCallback;" />
+    <div id="progress_slow_file_container">
+        <div id="progress_slow_file"></div>
+    </div>
+    <div id="loaded_slow_file"></div>
+
+    <label for="image_files">Make It Look Like An Avatar, click it to upload</label>
+    <div id="fake-avatar-container">
+        <input type="file" id="avatar_file"
+               files="on-loaded.bind: avatarLoadedCallback; file-filter.bind: 'image.*';" />
+    </div>
+
+    <label for="constrained_file">Limit the file size in bytes and/or filter for the file (allow images < 50kb)</label>
+    <input type="file" id="constrained_file"
+           files="on-loaded.bind: fileSizeCallback; on-error.bind: fileSizeErrorCallback; file-filter.bind: 'image.*'; max-file-size: 51200;" />
+    <div id="error-output"></div>
+
+    <label for="drag_and_drop_file">Drag and Drop images, WUTWUT!?</label>
+    <div type="file" id="drag_and_drop_file"
+         files="on-loaded.bind: dragAndDropCallback; file-filter.bind: 'image.*'; allow-drop: true; hover-class: 'hover';"></div>
+
+</template>

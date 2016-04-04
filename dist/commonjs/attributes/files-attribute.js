@@ -8,57 +8,17 @@ var _createDecoratedClass = (function () { function defineProperties(target, des
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer.call(target); Object.defineProperty(target, key, descriptor); }
+function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
 var _aureliaFramework = require('aurelia-framework');
 
-var _handlersFileHandler = require('../handlers/file-handler');
+var _handlersFileHandler = require("../handlers/file-handler");
 
 var FilesAttribute = (function () {
   var _instanceInitializers = {};
+  var _instanceInitializers = {};
 
-  function FilesAttribute(element) {
-    _classCallCheck(this, _FilesAttribute);
-
-    _defineDecoratedPropertyDescriptor(this, 'onLoaded', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'onProgress', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'onError', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'fileFilter', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'maxFileSize', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'readAs', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'allowDrop', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'hoverClass', _instanceInitializers);
-
-    this.element = element;
-  }
-
-  var _FilesAttribute = FilesAttribute;
-
-  _createDecoratedClass(_FilesAttribute, [{
-    key: 'bind',
-    value: function bind() {
-      if (!this.onLoaded) {
-        throw new Error('You must specify an onLoaded callback at minimum');
-      }
-
-      var fileHandler = new _handlersFileHandler.FileHandler(this.onLoaded, this.onProgress, this.onError, this.fileFilter, this.maxFileSize, this.readAs, this.hoverClass);
-
-      this.element.addEventListener('change', fileHandler.handleFileSelected, false);
-
-      if (this.allowDrop) {
-        this.element.addEventListener('dragover', fileHandler.handleFileDrag, false);
-        this.element.addEventListener('dragleave', fileHandler.handleFileDrag, false);
-        this.element.addEventListener('drop', fileHandler.handleDrop, false);
-      }
-    }
-  }, {
+  _createDecoratedClass(FilesAttribute, [{
     key: 'onLoaded',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
@@ -100,6 +60,48 @@ var FilesAttribute = (function () {
     enumerable: true
   }], null, _instanceInitializers);
 
+  function FilesAttribute(element) {
+    _classCallCheck(this, _FilesAttribute);
+
+    _defineDecoratedPropertyDescriptor(this, 'onLoaded', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'onProgress', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'onError', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'fileFilter', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'maxFileSize', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'readAs', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'allowDrop', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'hoverClass', _instanceInitializers);
+
+    this.element = element;
+  }
+
+  _createDecoratedClass(FilesAttribute, [{
+    key: 'bind',
+    value: function bind() {
+      if (!this.onLoaded) {
+        throw new Error("You must specify an onLoaded callback at minimum");
+      }
+
+      var fileHandler = new _handlersFileHandler.FileHandler(this.onLoaded, this.onProgress, this.onError, this.fileFilter, this.maxFileSize, this.readAs, this.hoverClass);
+
+      this.element.addEventListener('change', fileHandler.handleFileSelected, false);
+
+      if (this.allowDrop) {
+        this.element.addEventListener('dragover', fileHandler.handleFileDrag, false);
+        this.element.addEventListener('dragleave', fileHandler.handleFileDrag, false);
+        this.element.addEventListener('drop', fileHandler.handleDrop, false);
+      }
+    }
+  }], null, _instanceInitializers);
+
+  var _FilesAttribute = FilesAttribute;
   FilesAttribute = (0, _aureliaFramework.inject)(Element)(FilesAttribute) || FilesAttribute;
   FilesAttribute = (0, _aureliaFramework.customAttribute)('files')(FilesAttribute) || FilesAttribute;
   return FilesAttribute;
