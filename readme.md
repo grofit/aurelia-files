@@ -6,11 +6,11 @@ A simple aurelia attribute to allow you to load files into the browser, using th
 
 with jspm
 
-`jspm install github:grofit/aurelia-files`
+`jspm install grofit/aurelia-files`
 
 then
 
-`aurelia.use.plugin("grofit/aurelia-files");`
+`aurelia.use.plugin("aurelia-files");`
 
 ## Example
 
