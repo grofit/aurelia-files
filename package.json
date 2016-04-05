@@ -39,13 +39,6 @@
   "directories": {
     "lib": "dist/system"
   },
-  "dependencies": {
-    "aurelia-dependency-injection": "^1.0.0-beta.1",
-    "aurelia-framework": "^1.0.0-beta.1",
-    "aurelia-metadata": "^1.0.0-beta.1",
-    "aurelia-pal": "^1.0.0-beta.1",
-    "aurelia-templating": "^1.0.0-beta.1"
-  },
   "devDependencies": {
     "aurelia-tools": "^0.1.12",
     "aurelia-bundler": "^0.3.2",
