@@ -1,6 +1,6 @@
 {
   "name": "aurelia-files",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "registry": "jspm",
   "description": "A simple attribute plugin for Aurelia to simplify loading files with the HTML5 FileReader",
   "keywords": [

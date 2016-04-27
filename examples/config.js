@@ -2,26 +2,17 @@ System.config({
   baseURL: ".",
   defaultJSExtensions: true,
   transpiler: "babel",
-  babelOptions: {
-    "optional": [
-      "runtime",
-      "optimisation.modules.system"
-    ]
-  },
   paths: {
     "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*",
-    "aurelia-files": "../dist/commonjs/"
+    "npm:*": "jspm_packages/npm/*"
   },
   packages: {
     "aurelia-files": {
-      "main": "index.js",
-      "map": {
-        "*": "**/*"
-      }
+      "main": "index.js"
     }
   },
   map: {
+    "aurelia-files": "../dist/commonjs/",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1.1.4",
     "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.1.5",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.1.4",
