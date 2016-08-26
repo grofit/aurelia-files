@@ -56,7 +56,7 @@ export class FileHandler
 
             if(this.maxFileSize && f.size >= this.maxFileSize)
             {
-                if(onError)
+                if(this.onError)
                 { this.onError(f, "File exceeds file size limit"); }
                 continue;
             }
