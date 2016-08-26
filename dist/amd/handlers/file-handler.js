@@ -70,7 +70,7 @@ define(["exports", "../helpers/file-reader-helper"], function (exports, _helpers
                         }
 
                         if (_this.maxFileSize && f.size >= _this.maxFileSize) {
-                            if (onError) {
+                            if (_this.onError) {
                                 _this.onError(f, "File exceeds file size limit");
                             }
                             continue;
