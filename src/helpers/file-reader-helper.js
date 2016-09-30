@@ -6,14 +6,14 @@ export class FileReaderHelper
             onLoaded(file, fileLoadedEvent.target.result);
         };
 
-        if(typeof(progressCallback) == "function")
+        if(typeof(onProgress) == "function")
         {
             reader.onprogress = function(fileProgressEvent) {
                 onProgress(file, fileProgressEvent.loaded, fileProgressEvent.total);
             };
         }
 
-        if(typeof(errorCallback) == "function")
+        if(typeof(onError) == "function")
         {
             reader.onerror = function(fileErrorEvent) {
                 onError(file, fileErrorEvent.target.error);
