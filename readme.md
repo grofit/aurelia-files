@@ -6,7 +6,7 @@ A simple aurelia attribute to allow you to load files into the browser, using th
 
 with jspm
 
-`jspm install aurelia-files`
+`jspm install npm:aurelia-files`
 
 then
 
