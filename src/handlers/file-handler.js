@@ -45,7 +45,14 @@ export class FileHandler
 
     handleFileSelected = (fileSelectionEvent) =>
     {
-        var files = fileSelectionEvent.target.files || fileSelectionEvent.dataTransfer.files;
+        // prevent undefined errors
+        if (!fileSelectionEvent.target) {
+            fileSelectionEvent.target = {};
+        }
+        if (!fileSelectionEvent.dataTransfer) {
+            fileSelectionEvent.dataTransfer = {};
+        }
+        var files = fileSelectionEvent.target.files || fileSelectionEvent.dataTransfer.files || [];
         for (let i = 0, f; f = files[i]; i++) {
             if (this.fileFilter && !f.type.match(this.fileFilter))
             {
