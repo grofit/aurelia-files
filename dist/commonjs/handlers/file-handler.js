@@ -44,7 +44,13 @@ var FileHandler = function FileHandler(onLoaded, onProgress, onError, fileFilter
     };
 
     this.handleFileSelected = function (fileSelectionEvent) {
-        var files = fileSelectionEvent.target.files || fileSelectionEvent.dataTransfer.files;
+        if (!fileSelectionEvent.target) {
+            fileSelectionEvent.target = {};
+        }
+        if (!fileSelectionEvent.dataTransfer) {
+            fileSelectionEvent.dataTransfer = {};
+        }
+        var files = fileSelectionEvent.target.files || fileSelectionEvent.dataTransfer.files || [];
         for (var i = 0, f = undefined; f = files[i]; i++) {
             if (_this.fileFilter && !f.type.match(_this.fileFilter)) {
                 if (_this.onError) {
